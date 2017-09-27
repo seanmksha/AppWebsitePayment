@@ -6,7 +6,7 @@ class Header extends Component
 {
     renderContent()
     {
-      console.log("HEADER"+this.props.auth);
+ 
       switch(this.props.auth)
       {
         case null:
@@ -27,7 +27,7 @@ class Header extends Component
       }
     }
     render(){
-      console.log(this.props);
+
         return (
             <div>
               <nav>
