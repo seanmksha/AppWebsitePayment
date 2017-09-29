@@ -11,6 +11,8 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser=require('body-parser');
 const keys = require('./config/keys');
+var expressValidator = require('express-validator');
+var flash = require('connect-flash');
 require('./models/User');
 require('./models/Survey');
 require('./services/passport');
@@ -24,8 +26,9 @@ mongoose.connect(keys.mongoURI);
 const app = express();
 
 
+app.use(expressValidator());
 app.use(bodyParser.json());
-
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
     cookieSession(
         {
@@ -36,7 +39,9 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-
+  // Connect Flash
+  app.use(flash());
+  
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 require('./routes/surveyRoutes')(app);

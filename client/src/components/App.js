@@ -7,7 +7,8 @@ import Header from './Header';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
 import SurveyNew from './surveys/SurveyNew';
-
+import Register from './auth/RegisterNew';
+import Login from './auth/LoginNew';
 
 class App extends Component{
 
@@ -21,8 +22,10 @@ class App extends Component{
              <div className="container">
                     <Header />
                     <Route exact path="/" component = {Landing}/>
-                 <Route exact path="/surveys" component={Dashboard}/>
+                    <Route exact path="/surveys" component={Dashboard}/>
                     <Route path="/surveys/new" component={SurveyNew} />
+                    <Route path="/register" component={Register}/>
+                    <Route path="/login" component={Login}/>
                 </div>
             </BrowserRouter>
           

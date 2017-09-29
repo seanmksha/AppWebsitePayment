@@ -12,9 +12,11 @@ class Header extends Component
         case null:
           return;
         case false:
-          return (
-            <li><a href="/auth/google">Login With Google</a></li>
-          );
+          return [
+            <li key="1"><a href="/register">Register</a></li>,
+            <li key="2"><a href="/login">Login</a></li>,
+            <li key="3"><a href="/auth/google">Login With Google</a></li>
+          ];
        
         default:
         return [
@@ -50,7 +52,12 @@ class Header extends Component
 
 function mapStateToProps(state)
 {
+  
+  if(state.auth)
+    {
     return { auth:state.auth};
+    }
+    return {auth:false};
 }
 
 export default connect(mapStateToProps)(Header);
